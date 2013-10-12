@@ -15,6 +15,7 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
+  var fs = require('fs');
 
   // configurable paths
   var yeomanConfig = {
@@ -80,7 +81,11 @@ module.exports = function (grunt) {
             return [
               lrSnippet,
               mountFolder(connect, '.tmp'),
-              mountFolder(connect, yeomanConfig.app)
+              mountFolder(connect, yeomanConfig.app),
+              // for angular apps, we send 404s back to the application
+              function(req, res){
+                res.end(fs.readFileSync(__dirname+'/app/index.html', {encoding:'utf8'}));
+              }
             ];
           }
         }
