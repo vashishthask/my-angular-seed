@@ -13,8 +13,9 @@ module.exports = function(config) {
     files: [
       'bower_components/jquery/jquery.js',
       'bower_components/angular/angular.js',
+      'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/angular-test-scaffold/plugin.js',
+      'bower_components/angular-test-scaffold/*.js',
       'scripts/*.js',
       'scripts/**/*.js',
       'views/*.html',
