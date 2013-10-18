@@ -4,7 +4,8 @@ My-angular-seed is a project, derived from the [Yeoman angular project build](ht
 
 * has 1.2.x AngularJS build; 
 * has a specially configured grunt server for use with single page applications;
-* Assumes you are building the application from scratch, there is application scaffold apart from a very thin `index.html` and a trivial `app.js`.
+* assumes you are building the application from scratch, there is no initial application scaffold apart from a very thin `index.html` and a trivial `app.js`.  
+You can still use the yeoman scaffolding commands, but its not my practice.
 * has karma installed and configured to use ngRoute, and angular-test-scaffold.
 
 ## Installation
@@ -12,8 +13,8 @@ My-angular-seed is a project, derived from the [Yeoman angular project build](ht
 Assuming you have installed node, and globally installed generator-angular, you can start cooking with:
 
 ```bash
-git clone wizardwerdna/my-angular-seed foo
-cd foo
+git clone https://github.com/wizardwerdna/my-angular-seed.git <your-directory-here>
+cd <your-directory-here>
 npm install && bower install
 ```
 
@@ -50,6 +51,9 @@ git push heroku master
 1.  After deployment, run the application wth
 
 ```bash
+heroku open
+
+# if that fails, try
 heroku ps:scale web=1
 heroku open
 ```
