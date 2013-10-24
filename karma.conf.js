@@ -9,6 +9,8 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
+    reporters: ['osx', 'progress'],
+
     // list of files / patterns to load in the browser
     files: [
       'bower_components/jquery/jquery.js',
