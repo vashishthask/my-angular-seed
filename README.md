@@ -58,4 +58,76 @@ heroku ps:scale web=1
 heroku open
 ```
 
+## TDD AngularJS Cheat Sheet
+
+*  [**angular.mock.module**](http://docs.angularjs.org/api/angular.mock.module)
+*  [**angular.mock.inject**](http://docs.angularjs.org/api/angular.mock.inject)
+*  [**$rootScope**](http://docs.angularjs.org/api/ng.$rootScope.Scope)
+*  [**$compile**](http://docs.angularjs.org/api/ng.$compile)
+
+These can be used to construct a dynamic DOM fragment running angular, ideal for integration and directive testing:
+
+```javascript
+var app;
+beforeEach( module ( 'app' ) );
+beforeEach( inject( function($compile, $rootScope) {
+  $compile(
+    '<h1>Great HTML Definition for the Fragment</h1>'
+  )($rootScope.$new);
+  $rootScope.$digest();
+});
+```
+
+*  [**$controller**](http://docs.angularjs.org/api/ng.$controller);
+
+This can be used to construct a controller unit test
+
+```javascript
+var $scope;
+
+beforeEach( module ( 'app' ) );
+beforeEach( inject( function($controller, $rootScope) {
+  $scope = $rootScope.$new();
+  $controller( 'CtrlCtrl', {
+    $scope: $scope,
+    dittyService: mockDittyService
+    ...
+  }
+});
+```
+
+*  [**$injector.get**](http://docs.angularjs.org/api/AUTO.$injector)
+
+This is helpful for obtaining arbitrary objects, its really a matter of style whether to do:
+
+```javascript
+var cerveza;
+beforeEach( module( 'app' ) );
+beforeEach( inject( function(_cerveza_) {
+  cerveza = _cerveza_;
+}));
+```
+
+or:
+
+```javascript
+var cerveza;
+beforeEach( module( 'app' ) );
+beforeEach( inject( function($injector) {
+  cerveza = injector.get('cerveza');
+}));
+```
+
+* [**$provide**](http://docs.angularjs.org/api/AUTO.$provide)
+
+This is helpful for initializing, overriding or setting dependencies relied upon in the application, an excellent vehicle to store test doubles.
+
+```javascript
+beforeEach ( module( 'app', function($provide) {
+  $provide.value( 'valeu', function() {} );
+}));
+```
+
+For test purposes, this sets `valeu` to the defined function for the purpose of running tests in a module.
+
 Enjoy. 
