@@ -27,11 +27,16 @@
     "before": false,
     "beforeEach": false,
     "browser": false,
+    "createSpy": false,
+    "createSpyObj": false,
     "describe": false,
     "expect": false,
     "inject": false,
     "it": false,
-    "spyOn": false
+    "jasmine": false,
+    "runs": false,
+    "spyOn": false,
+    "waitsFor": false
   }
 }
 
