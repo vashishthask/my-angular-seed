@@ -23,6 +23,7 @@ module.exports = function(config) {
       'scripts/**/*.js',
       '*.html',
       'views/*.html',
+      '../lib/bindPolyfillForPhantomJS.js',
       '../test/*.js',
       '../test/mock/**/*.js',
       '../test/spec/**/*.js'
